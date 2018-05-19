@@ -9,6 +9,7 @@ import './styles/app.css';
 import GameList from './components/GameList';
 import Player from './components/Player';
 import GameView from './components/GameView';
+import Header from './components/Header';
 
 const store = createStore(model);
 
@@ -21,15 +22,25 @@ class App extends Component {
           <BrowserRouter>
             <div>
               <Route exact path="/"
-                render={match => (  
-                  <GameList />
+                render={match => (
+                  <div>  
+                    <Header
+                      crumbs={['Home']}
+                    />
+                    <GameList />
+                  </div>
                 )}
               />
               <Route path="/:game"
                 render={({match}) => (
-                  <GameView
-                    game={match.params.game}
-                  />
+                  <div>
+                    <Header
+                      crumbs={['Home', match.params.game]}
+                    />
+                    <GameView
+                      game={match.params.game}
+                    />
+                  </div>
                 )}
               />
             </div>

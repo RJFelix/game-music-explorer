@@ -1,6 +1,10 @@
 .app-container {
   max-height: calc(100vh - 150px);
   overflow-y: scroll;
+
+  @media only screen and (max-width: 800px) {
+    max-height: calc(100vh - 100px);
+  }
 }
 
 ::-webkit-scrollbar {

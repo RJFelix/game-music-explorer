@@ -34,7 +34,7 @@ class GameView extends React.Component {
     return(
       <div>
         <Jumbotron>
-          <h1>{this.state.game.title}   <small class='text-muted'>{this.state.game.publisher}, {this.state.game.year}</small></h1>
+          <h1>{this.state.game.title}   <small className='text-muted'>{this.state.game.publisher}, {this.state.game.year}</small></h1>
           <p>{this.state.game.description}</p>
         </Jumbotron>
         <ListGroup>

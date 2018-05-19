@@ -114,22 +114,42 @@ export const playTrack = ({ game, index, url }) => ({
     })
 })
 
+export const playNextTrack = () => ({
+    type: 'PLAY_NEXT_TRACK',
+})
+
 export default (state = initialState, {type, data}) => {
-    switch(type) {
-        case 'PLAY_TRACK': {
-            console.log(`Playing track ${data.index} from ${data.game}`);
-            return state.map(g => {
-                if(g.title === data.game) {
-                    return {
-                        ...g,
-                        tracks: g.tracks.map((t, idx) => ({...t, active: idx === data.index }))
-                    }
-                }
-                return g;
-            });
+  switch(type) {
+    case 'PLAY_TRACK': {
+      return state.map(g => {
+        if(g.title === data.game) {
+          return {
+            ...g,
+            tracks: g.tracks.map((t, idx) => ({...t, active: idx === data.index }))
+          }
         }
-        default: {
-            return state;
-        }
+        return g;
+      });
     }
+    case 'PLAY_NEXT_TRACK': {
+      const currentGame = state.find(g => g.tracks.some(t => t.active));
+      const currentTrackIdx = currentGame.tracks.findIndex(t => t.active);
+      let nextTrackIdx = 0;
+      if(currentTrackIdx + 1 < currentGame.tracks.length) {
+        nextTrackIdx = currentTrackIdx + 1;
+      }
+      const nextTracks = [...currentGame.tracks];
+      nextTracks[currentTrackIdx].active = false;
+      nextTracks[nextTrackIdx].active = true;
+      return [
+        ...state,
+        { ...currentGame,
+          tracks: nextTracks,
+        }
+      ]
+    }
+    default: {
+      return state;
+    }
+  }
 }
