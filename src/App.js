@@ -4,10 +4,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Container } from 'reactstrap';
 import model from './model';
-import './App.css';
+import './styles/app.css';
 
 import GameList from './components/GameList';
 import Player from './components/Player';
+import GameView from './components/GameView';
 
 const store = createStore(model);
 
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Container>
+        <Container className='app-container'>
           {/* header */}
           <BrowserRouter>
             <div>
@@ -26,7 +27,9 @@ class App extends Component {
               />
               <Route path="/:game"
                 render={({match}) => (
-                  <div>{match.params.game}</div>
+                  <GameView
+                    game={match.params.game}
+                  />
                 )}
               />
             </div>

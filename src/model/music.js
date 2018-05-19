@@ -1,17 +1,11 @@
 const initialState = {
-    url: 'https://soundcloud.com/earlskiez/skyrim-theme-song-full',
+    url: null,
 }
-
-export const setMusicUrl = url => ({
-    type: 'SET_MUSIC_URL',
-    data: {
-        url,
-    }
-});
 
 export default (state = initialState, {type, data}) => {
     switch(type) {
-        case 'SET_MUSIC_URL': {
+        case 'PLAY_TRACK': {
+            console.log(`Playing url ${data.url}`);
             return {
                 ...state,
                 url: data.url,

@@ -1,0 +1,22 @@
+.app-container {
+  max-height: calc(100vh - 150px);
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(0,128,255);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(0,32,128);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0,32,255);
+}
+
+body {
+  background: rgb(98,154,255);
+  background: linear-gradient(90deg, rgba(98,154,255,1) 10%, rgba(109,109,245,1) 30%, rgba(106,106,223,1) 50%, rgba(109,109,245,1) 70%, rgba(98,154,255,1) 90%);
+}

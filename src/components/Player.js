@@ -18,15 +18,14 @@ const Player = props => {
                             auto_play: true,
                             sharing: false,
                             download: false,
+                            color: '#6a6adf',
                         }
                     }}
                 />
              </div>
         )
     } else {
-        return (
-            <div>No track selected.</div>
-        )
+        return null;
     }
 }
 
